@@ -52,7 +52,7 @@ function someHtml() {
 }
 
 
-function getHtml( jml ) {
+function jhtml( jml ) {
  
     var html = [];
 
@@ -64,7 +64,7 @@ function getHtml( jml ) {
         }
         else if( typeof jml[key] === "object") 
         {
-            html.push( wrap( key, getHtml( jml[key] )));        
+            html.push( wrap( key, jhtml( jml[key] )));        
         }  
         else 
         {
@@ -80,6 +80,6 @@ function wrap( tag, html )
     return tag === "t" ? html : '<'+tag+'>'+html+'</'+tag.split(" ")[0]+'>';
 }
 
-var html = getHtml( jml ); 
+var html = jhtml( jml ); 
 
 console.log(html);
