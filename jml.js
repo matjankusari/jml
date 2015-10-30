@@ -1,85 +1,49 @@
-//var mat = <title>The HTML5 Herald</title>;
+/* Private */
 
-var jml = {
+function element( tag, html ) {
 
-    body: {
-        'div class=mat uuid123': {
-            span: {
-                t: "No, np, hello u"
-            },
-            table: {
-                h2: {
-                    t: "more text"
-                },
-                'a href="http://www.google.com"' : {
-                    t:'text'
-                }
-            }
-        },
-        'div': {
-            span: {
-                button: {
-                    t: "sdfsdfdffsd"
-                }
-            }
-        },
-        myeleemnt: {
-            anopther: {
-                yeanother: {
-                    t:"ddfgdfgsdfgf"
-                }
-            },
-            kkkkk: {
-                t:"sdfsdf"
-            }
-        },
-        'mat class="mat"': {
-            t: "sdfsdf"
-        },
-        blink: someHtml()
-    }
+    return tag === "t" ? html : 
+           [ '<', rmxid(tag), '>', html, '</', tag.split(" ")[0], '>'].join('');
 }
 
+function rmxid( tag ) { return tag.replace(/ xid="\d+"/g, ""); }
 
-function someHtml() {
-    return {
-        div: {
-            span: {
-                t: "sdffsdf"
-            }
-        }
-    }
-}
+function random() { return Math.floor((Math.random() * 100) + 1); }
 
+/* Public */
 
-function jhtml( jml ) {
+function parse( jml ) {
  
     var html = [];
 
-    Object.keys( jml ).forEach( function( key ) {
+    Object.keys( jml ).forEach( function( node ) {
 
-        if ( typeof jml[key] === "string") 
+        if ( typeof jml[node] === "string") 
         {   
-            html.push( wrap( key, jml[key]) );
+            html.push( element( node, jml[node]) );
         }
-        else if( typeof jml[key] === "object") 
+        else if( typeof jml[node] === "object") 
         {
-            html.push( wrap( key, jhtml( jml[key] )));        
+            html.push( element( node, parse( jml[node] )));        
         }  
         else 
         {
-            throw new Error("invalid node type: " + key );
+            throw new Error("invalid node type: " + node );
         }
     });
 
     return html.join("");
 }
 
-function wrap( tag, html ) 
-{
-    return tag === "t" ? html : '<'+tag+'>'+html+'</'+tag.split(" ")[0]+'>';
-}
+function id( id ) { return [' ', id || 'id' , '="' , random(), random(), '"'].join(''); }
 
-var html = jhtml( jml ); 
+function xid() { return id('xid'); }
 
-console.log(html);
+/* Export */
+
+module.exports = {
+    parse: parse,
+    id: id,
+    xid: xid
+};
+
