@@ -1,4 +1,4 @@
-var jml = require('./jml');
+var jml = require('./jml-func');
 
 var someJml = {
 
