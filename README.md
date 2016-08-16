@@ -9,7 +9,7 @@ Example:
 ```
 var jml = {
   body: {
-    'div class="class" id="id1234"': {
+    'div class="class"': {
         span: {
             t: 'Text Node'
         }

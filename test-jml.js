@@ -1,5 +1,5 @@
 
-var jml = require('./jml-func');
+var jml = require('./jml');
 
 var nItems = 20000;
 
@@ -7,9 +7,9 @@ var data = [];
 
 var range = function(n) { return Array.apply(null, Array(n)).map(function (_, i) {return i;}); }
 
-range(nItems).forEach( function(i) { data.push({ name: 'mat', surname: 'kusari', id: i }); })
+range(nItems).forEach( function(i) { data.push({ name: 'John', surname: 'Smith', id: i }); })
 
-function myView( data ) {
+function myHtmlView( data ) {
 
     return data.map(function( item ) {
         
@@ -28,12 +28,13 @@ function fullName( item ) {
 
 
 function testOrder( html ) {
-    range(nItems).forEach( function(s) { html.indexOf(s) > -1 ? '' : console.log('Not passed', s) } );
+    var testOk = true;
+    range(nItems).forEach( function(s) { html.indexOf(s) > -1 ? '' : testOk = false; } );
+    return testOk;
 }
 
-testOrder( myView(data) );
-
-//console.log( myView(data));
-
-
-
+console.log( 
+    [ "Test ",  
+      testOrder( myHtmlView(data)) ? "passed": "did not pass!"
+    ].join('')
+);

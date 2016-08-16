@@ -1,0 +1,26 @@
+{
+  "name": "jml",
+  "version": "1.0.0",
+  "description": "Library used to convert json markup into html i.e. jml",
+  "main": "jml.js",
+  "scripts": {
+    "test": "node test-jml.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matjankusari/jml.git"
+  },
+  "keywords": [
+    "convert",
+    "json",
+    "html",
+    "transpile",
+    "template"
+  ],
+  "author": "Mat Kusari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matjankusari/jml/issues"
+  },
+  "homepage": "https://github.com/matjankusari/jml#readme"
+}
