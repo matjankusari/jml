@@ -1,16 +1,7 @@
-/* Private */
-
 function element( tag, html ) {
 
-    return tag === 't' ? html : 
-           [ '<', rmxid(tag), '>', html, '</', tag.split(" ")[0], '>'].join('');
+    return [ '<', tag, '>', html, '</', tag.split(" ")[0], '>'].join('');
 }
-
-function rmxid( tag ) { return tag.replace(/ xid="\d+"/g, ""); }
-
-function random() { return Math.floor((Math.random() * 100) + 1); }
-
-/* Public */
 
 function parse( jml ) {
  
@@ -25,16 +16,6 @@ function parse( jml ) {
     return html.join('');
 }
 
-function id( id ) { return [' ', id || 'id' , '="' , random(), random(), '"'].join(''); }
-
-function xid() { return id('xid'); }
-
-/* Export */
-
 module.exports = {
-    parse: parse,
-    id: id,
-    xid: xid
+    parse: parse
 };
-
-

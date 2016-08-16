@@ -1,4 +1,4 @@
-var jml = require('./jml-func');
+var jml = require('./jml');
 
 var someJml = {
 
@@ -34,7 +34,7 @@ var someJml = {
             }
         },
         'mat class="mat"': {
-            t: "sdfsdf"
+            t: "mat tet"
         },
         blink: moreJml()
     }
@@ -44,9 +44,7 @@ var someJml = {
 function moreJml() {
     return {
         div: {
-            span: {
-                t: "sdffsdf"
-            }
+            span:  "sdffsdf"
         }
     }
 }

@@ -15,15 +15,25 @@ function random() { return Math.floor((Math.random() * 100) + 1); }
 function parse( jml ) {
  
     var html = [];
+    
+    function _parse( _jml ) {
+        
+        Object.keys( _jml ).forEach( function( node ) { 
+            call[ typeof _jml[node] ]( node ); 
+        });
+        
+        return html.join('');    
+    }
+
     var call = {
         string: function( node ) { html.push( element( node, jml[node]) ); },
-        object: function( node ) { html.push( element( node, parse( jml[node] ))); }
+        object: function( node ) { html.push( element( node, _parse( jml[node] ))); }
     };
 
-    Object.keys( jml ).forEach( function( node ) { call[ typeof jml[node] ]( node ); });
-
-    return html.join('');
+    return _parse( jml );
 }
+
+
 
 function id( id ) { return [' ', id || 'id' , '="' , random(), random(), '"'].join(''); }
 

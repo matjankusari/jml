@@ -6,9 +6,9 @@ Object.prototype.each = function(f) {
 }
 
 
-var jml = require('./jml-func');
+var jml = require('./jml');
 
-var nItems = 170;
+var nItems = 200;
 
 var data = [];
 
