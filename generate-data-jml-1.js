@@ -1,7 +1,7 @@
 
-var jml = require('./jml');
+var jml = require('./jml-func');
 
-var nItems = 20;
+var nItems = 20000;
 
 var data = [];
 
@@ -33,7 +33,7 @@ function testOrder( html ) {
 
 testOrder( myView(data) );
 
-console.log( myView(data));
+//console.log( myView(data));
 
 
 
