@@ -1,5 +1,28 @@
 
-var jml = require('./jml');
+var compiler = require('./jml');
+
+///////////////////////////////////////////////////////////////////////////////
+
+var jml = {
+  body: {
+    'div class="class"': {
+        span: 'Text Node'
+    },
+    table: {
+        tr: {
+            td: 'Data'
+        }
+    }
+  }
+}
+
+console.log( 
+    [ "Test HTML conversion ",  
+      compiler.parse( jml ) === '<body><div class="class"><span>Text Node</span></div><table><tr><td>Data</td></tr></table></body>' ? "passed": "did not pass!"
+    ].join('')
+);
+
+///////////////////////////////////////////////////////////////////////////////
 
 var nItems = 20000;
 
@@ -13,7 +36,7 @@ function myHtmlView( data ) {
 
     return data.map(function( item ) {
         
-        return jml.parse({
+        return compiler.parse({
             div: {
                 span: fullName(item)
             }
@@ -34,7 +57,7 @@ function testOrder( html ) {
 }
 
 console.log( 
-    [ "Test ",  
+    [ "Test Order ",  
       testOrder( myHtmlView(data)) ? "passed": "did not pass!"
     ].join('')
 );
