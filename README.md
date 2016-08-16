@@ -7,6 +7,8 @@ Works well with generating dynamic html from a combinaition of json and java scr
 Example:
 
 ```
+var compiler = require('./jml');
+
 var jml = {
   body: {
     'div class="class"': {
@@ -24,15 +26,15 @@ var jml = {
   }
 }
 
-var html = jhtml( jml );
+var html = compile.parse( jml );
 
 ```
 
-Html:
+Output:
 
 ```
 <body>
-    <div class="class" id="id1234">
+    <div class="class">
         <span>Text Node</span>
     </div>
     <table>
@@ -41,6 +43,7 @@ Html:
         </tr>
     </table>
 </body>
+
 ```
 
 
@@ -49,17 +52,17 @@ Can produce html dynamically based on an array of data:
 
 ```
 
-var jml = require('./jml');
+var compiler = require('./jml');
 
 var data = [
     {
         id: 1,
-        name: 'MArk',
+        name: 'Mark',
         surname: 'Wayne'
     },
     {
         id: 2,
-        name: 'TErese',
+        name: 'Terese',
         surname: 'Wayne'
     },
     {
@@ -74,70 +77,51 @@ var data = [
     }
 ];
 
-function someJml() {
+function myHtmlView( data ) {
 
-    var someJml = {};
-
-    data.forEach( function( item ) {
-
-        someJml['div' + jml.xid() ] = {
-            'span class="styled"': {
-                t: fullName( item )    
+    return data.map(function( item ) {
+        
+        return compiler.parse({
+            div: {
+                span: fullName(item)
             }
-            
-        }
-    });
+        });
 
-    return someJml;
+    }).join('');
 }
 
 function fullName( item ) {
-    return [ item.name, , ' ', item.surname].join('');
+    return [ item.id, ': ', item.name,' ', item.surname ].join('');
 }
-
-var html = jml.parse( someJml() );
 
 console.log( html );
 
 ```
 
-Html is 
+Output: 
 
 ```
 
 <div>
-    <span class="styled">MArk Wayne</span>
+    <span class="styled">1: MArk Wayne</span>
 </div>
 <div>
-    <span class="styled">TErese Wayne</span>
+    <span class="styled">2: Terese Wayne</span>
 </div>
 <div>
-    <span class="styled">Julian Wayne</span>
+    <span class="styled">3: Julian Wayne</span>
 </div>
 <div>
-    <span class="styled">John Wayne</span>
+    <span class="styled">4: John Wayne</span>
 </div>
 
 
 ```
 
-How to handle unique id's. 
+When the usecase is singular data i.e. like the first example then use the compiler directly.
+When the usecase is an array of data then use a map function to render out individual data objects.
 
-Use jml.id() or jml.xid() to generate unique id for each element.
-
-jml.xid() will remove the id from the final html output. 
-
-```
-
-    data.forEach( function( item ) {
-
-        someJml['div' + jml.xid() ] = {
-            'span class="styled"': {
-                t: fullName( item )    
-            }
-            
-        }
-    });
-
-```
+Note: Must use map function with array. In case of large data set the compiler will blow out the js
+stack available. To avoid this use the map function to render out individual data objects and then
+concatinate them using .join('') for example.
 
