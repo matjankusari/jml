@@ -1,6 +1,6 @@
 {
   "name": "jml-compiler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library used to convert json markup into html i.e. jml",
   "main": "jml.js",
   "scripts": {
