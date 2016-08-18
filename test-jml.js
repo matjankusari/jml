@@ -22,6 +22,53 @@ console.log(
     ].join('')
 );
 
+//////////////////////////////////////////////////////////////////////////////
+
+var data = [
+    {
+        id: 1,
+        name: 'Mark',
+        surname: 'Wayne'
+    },
+    {
+        id: 2,
+        name: 'Terese',
+        surname: 'Wayne'
+    },
+    {
+        id: 3,
+        name: 'Julian',
+        surname: 'Wayne'
+    },
+    {
+        id: 4,
+        name: 'John',
+        surname: 'Wayne'
+    }
+];
+
+function myHtmlView( data ) {
+
+    return data.map(function( item ) {
+        
+        var bla = compiler.parse({
+            'div class="wrap"': {
+                h1: 'My title',
+                'span class="styled"': fullName(item)
+            }
+        });
+        console.log(bla);
+        return bla;
+
+    }).join('');
+}
+
+function fullName( item ) {
+    return [ item.id, '--: ', item.name,' ', item.surname ].join('');
+}
+
+console.log( myHtmlView(data) );
+
 ///////////////////////////////////////////////////////////////////////////////
 
 var nItems = 20000;

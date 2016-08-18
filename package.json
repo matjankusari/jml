@@ -1,5 +1,5 @@
 {
-  "name": "jml",
+  "name": "jml-compiler",
   "version": "1.0.0",
   "description": "Library used to convert json markup into html i.e. jml",
   "main": "jml.js",
@@ -17,7 +17,7 @@
     "transpile",
     "template"
   ],
-  "author": "Mat Kusari",
+  "author": "Mat Kusari <matjankusari@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/matjankusari/jml/issues"
