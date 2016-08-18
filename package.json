@@ -4,7 +4,7 @@
   "description": "Library used to convert json markup into html i.e. jml",
   "main": "jml.js",
   "scripts": {
-    "test": "node test-jml.js"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/matjankusari/jml/issues"
   },
-  "homepage": "https://github.com/matjankusari/jml#readme"
+  "homepage": "https://github.com/matjankusari/jml#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.0.2"
+  }
 }
