@@ -79,7 +79,7 @@ function myHtmlView( data ) {
         
         return compiler.parse({
             div: {
-                span: fullName(item)
+                'span class="styled"': fullName(item)
             }
         });
 
@@ -99,7 +99,7 @@ Output:
 ```
 
 <div>
-    <span class="styled">1: MArk Wayne</span>
+    <span class="styled">1: Mark Wayne</span>
 </div>
 <div>
     <span class="styled">2: Terese Wayne</span>
@@ -118,6 +118,7 @@ When the usecase is an object (can be as nested as needed) i.e. like the first e
 When the usecase is an array of objects then use a map function to render out each individual object.
 
 Note: Must use map function with array. In case of large arrays the compiler will blow out the js
-stack available. To avoid this use the map function to render out individual data objects and then
+stack available due to recursive nature of the implementation. 
+To avoid this use the map function to render out individual data objects and then
 concatinate them using .join('') for example.
 
