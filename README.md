@@ -7,7 +7,7 @@ Works well with generating dynamic html from a combinaition of json and java scr
 Example:
 
 ```
-var compiler = require('./jml');
+var compiler = require('./jml-compiler');
 
 var jml = {
   body: {
@@ -48,7 +48,7 @@ Can produce html dynamically based on an array of data:
 
 ```
 
-var compiler = require('./jml');
+var compiler = require('./jml-compiler');
 
 var data = [
     {
