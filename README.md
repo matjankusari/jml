@@ -117,7 +117,7 @@ Output:
 When the usecase is an object (can be as nested as needed) i.e. like the first example then use the compiler directly.
 When the usecase is an array of objects then use a map function to render out each individual object.
 
-Note: Must use map function with array. In case of large arrays the compiler will blow out the js
+Note: Must use map function with a data array. In case of large arrays the compiler will blow out the js
 stack available due to recursive nature of the implementation. 
 To avoid this use the map function to render out individual data objects and then
 concatinate them using .join('') for example.
