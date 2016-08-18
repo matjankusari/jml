@@ -90,7 +90,7 @@ function fullName( item ) {
     return [ item.id, ': ', item.name,' ', item.surname ].join('');
 }
 
-console.log( html );
+console.log( myHtmlView(data) );
 
 ```
 
